@@ -13,7 +13,6 @@ def call(method, name, resource_id='', nested='', data=None, params=None, **kwar
     if nested:
         url += '/' + nested
 
-    print(url)
     data = data or {}
     params = params or {}
 
@@ -23,7 +22,7 @@ def call(method, name, resource_id='', nested='', data=None, params=None, **kwar
     })
 
     response = requests.request(method, url, data=data, params=params, **kwargs)
-    if 200 <= response.status_code < 300:
+    if 200 < response.status_code < 300:
         raise ValueError()
 
     try:
